@@ -3,8 +3,6 @@ import React from 'react'
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <h4></h4>
-
             <div className="menu">
                 <ul className='menus'>
                     <li className='menu-items'>Dashboard</li>
