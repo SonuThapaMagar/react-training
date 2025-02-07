@@ -12,3 +12,4 @@
 - Open vs code
 - cd project(react-training)
 - `npm start`
+

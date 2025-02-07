@@ -1,17 +1,21 @@
 import './assets/css/main.css';
+import { BrowserRouter, Routes, Route } from "react-router";
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
+import Setting from './pages/Setting'
 
 const App = () => {
   return (
-    <div>
-     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/" element={<Users />} />
-      <Route path="/" element={<Setting />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/setting" element={<Setting />} />
+      </Routes>
       <Header />
       <div className="main_wrapper">
         <Sidebar />
@@ -23,7 +27,7 @@ const App = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 export default App;
