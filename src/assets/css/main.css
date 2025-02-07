@@ -7,6 +7,7 @@
 body {
     font-family: Arial, sans-serif;
 }
+
 /* Header */
 header {
     background-color: black;
@@ -17,7 +18,7 @@ header {
 
 .main_wrapper {
     display: flex;
-    height: 80vh; 
+    height: 80vh;
 }
 
 /* Sidebar */
@@ -27,9 +28,11 @@ header {
     padding: 20px;
     /* margin: 16px; */
 }
-h4{
+
+h4 {
     text-align: center;
 }
+
 /* Main Body */
 .main_body {
     width: 85%;
@@ -44,23 +47,36 @@ h4{
     padding: 20px;
     text-align: center;
 }
-ul{
+
+ul {
     list-style: none;
     padding: 8px;
     margin-top: 12px;
 }
-li{
+
+li {
     margin: 8px;
 }
-li:hover{
+
+li:hover {
     background-color: white;
     border-radius: 0.5rem;
     padding: 4px;
     margin: 8px;
     width: auto;
 }
-.menu-items{
+
+.menu-items {
     margin-bottom: 16px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+a:active{
+    text-decoration: none;
+    color: rgb(28, 174, 232);
 }
 
 /* Footer */
