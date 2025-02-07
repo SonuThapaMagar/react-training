@@ -11,18 +11,16 @@ import Setting from './pages/Setting'
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/setting" element={<Setting />} />
-      </Routes>
       <Header />
       <div className="main_wrapper">
         <Sidebar />
-
         <div className="main_body">
           <div className="body">
-            <h4>Body</h4>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/setting" element={<Setting />} />
+          </Routes>
           </div>
         </div>
       </div>
