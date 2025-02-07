@@ -13,3 +13,6 @@
 - cd project(react-training)
 - `npm start`
 
+## Install React Router for Navigation
+- `npm i react-router`
+
