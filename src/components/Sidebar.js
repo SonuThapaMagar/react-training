@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from "react-router";
+import { MdDashboard } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
 
 const Sidebar = () => {
     return (
@@ -7,7 +9,8 @@ const Sidebar = () => {
             <ul>
                 <li className='menu-items'>
                     <NavLink to="/dashboard" end>
-                        Dashboard
+                    <MdDashboard />
+                    Dashboard
                     </NavLink>
                 </li>
                 <li className='menu-items'>
@@ -20,7 +23,7 @@ const Sidebar = () => {
                         Setting
                     </NavLink></li>
                 <li className='menu-items'>
-                Logout</li>
+                    Logout</li>
             </ul>
         </div>
     )
