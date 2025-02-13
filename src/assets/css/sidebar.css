@@ -28,7 +28,14 @@
 .sidebar a:hover,
 .sidebar a.active {
     background-color: #7b2cbf;
-    color: white;
+    color: hsl(0, 0%, 100%);
+}
+.sidebar span{
+    display: flex;
+    align-items: center;
+}
+.sidebar span svg {
+    margin-right: 8px; 
 }
 /* Responsive Styles */
 @media (max-width: 768px) {
