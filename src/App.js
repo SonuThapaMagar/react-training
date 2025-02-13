@@ -1,13 +1,13 @@
 import './assets/css/main.css';
 import './assets/css/sidebar.css';
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
-import Users from './pages/Users';
-import Setting from './pages/Setting'
+import Footer from './components/Footer.js';
+import Header from './components/Header.js';
+import Sidebar from './components/Sidebar.js';
+import Dashboard from './pages/Dashboard.js';
+import Users from './pages/Users.js';
+import Setting from './pages/Setting.js'
 
 const App = () => {
   return (

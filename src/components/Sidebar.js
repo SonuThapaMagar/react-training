@@ -1,16 +1,16 @@
 import React from 'react'
 import { NavLink } from "react-router";
 import { MdDashboard } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
+// import { FaUser } from "react-icons/fa";
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
             <ul>
                 <li className='menu-items'>
-                    <NavLink to="/dashboard" end>
-                    <MdDashboard />
-                    Dashboard
+                <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')} end>
+                        <MdDashboard />
+                        Dashboard
                     </NavLink>
                 </li>
                 <li className='menu-items'>
