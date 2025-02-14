@@ -10,7 +10,7 @@ const Sidebar = () => {
         <div className="sidebar">
             <ul>
                 <li className='menu-items'>
-                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')} end>
+                    <NavLink to="/admin/dashboard" className={({ isActive }) => (isActive ? 'active' : '')} end>
                         <span>
                             <MdDashboard />
                             Dashboard
@@ -18,7 +18,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className='menu-items'>
-                    <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : '')} end>
+                    <NavLink to="/admin/users" className={({ isActive }) => (isActive ? 'active' : '')} end>
                         <span>
                             <FaUser />
                             Users
@@ -26,7 +26,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className='menu-items'>
-                    <NavLink to="/setting" className={({ isActive }) => (isActive ? 'active' : '')} end>
+                    <NavLink to="/admin/setting" className={({ isActive }) => (isActive ? 'active' : '')} end>
                         <span>
                             <IoSettings />
                             Setting

@@ -18,9 +18,9 @@ const App = () => {
         <div className="main_body">
           <div className="body">
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/setting" element={<Setting />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/setting" element={<Setting />} />
           </Routes>
           </div>
         </div>
