@@ -1,8 +1,9 @@
 import React from 'react'
+import UserHeader from './UserHeader';
+import UserRow from './UserRow';
 
-
-const users = (props) => {
-  const users = [
+const Users = (props) => {
+  const data = [
     {
       id: 1,
       name: 'John Doe',
@@ -37,39 +38,21 @@ const users = (props) => {
   return (
     <div>
       <h2>{props.title}</h2>
-      <table class="styled-table">
+      <table className="styled-table">
         <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>
-          </tr>
+          <UserHeader/>
         </thead>
         <tbody>
           {
-            users.map((user) => {
-              return (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.age}</td>
-                  <td>{user.email}</td>
-                </tr>
-              );
-            })
+            data.map((user) => (
+              <UserRow item={user}
+              />
+            ))
           }
         </tbody>
       </table>
-      {/* {
-        users.map((user) => {
-          return (
-            <div>{user.name}</div>
-          );
-        })
-      } */}
     </div>
   )
 }
 
-export default users
+export default Users
