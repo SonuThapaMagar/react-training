@@ -36,7 +36,7 @@ const users = (props) => {
   ];
   return (
     <div>
-      {props.title}
+      <h2>{props.title}</h2>
       <table class="styled-table">
         <thead>
           <tr>

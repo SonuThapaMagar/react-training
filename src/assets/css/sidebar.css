@@ -27,7 +27,7 @@
 
 .sidebar a:hover,
 .sidebar a.active {
-    background-color: #7b2cbf;
+    background-color: #009879;
     color: hsl(0, 0%, 100%);
 }
 .sidebar span{
