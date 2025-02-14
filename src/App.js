@@ -1,5 +1,6 @@
 import './assets/css/main.css';
 import './assets/css/sidebar.css';
+import './assets/css/table.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Footer from './components/Footer.js';
