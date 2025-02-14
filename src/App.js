@@ -6,7 +6,7 @@ import Footer from './components/Footer.js';
 import Header from './components/Header.js';
 import Sidebar from './components/Sidebar.js';
 import Dashboard from './pages/Dashboard.js';
-import Users from './pages/Users.js';
+import Users from './pages/user/Users.js';
 import Setting from './pages/Setting.js'
 
 const App = () => {
