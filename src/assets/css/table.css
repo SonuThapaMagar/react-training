@@ -5,6 +5,16 @@ h2{
     text-align: center;
     margin: 20px 0;
 }
+.addUser{
+    margin-left: 20px;
+    text-align: right;
+    background-color: #009879;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 0.5rem;
+    border-color: #009879;
+}
 .styled-table {
     border-collapse: collapse;
     margin: 25px 20px;

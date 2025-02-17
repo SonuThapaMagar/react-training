@@ -1,6 +1,8 @@
 import React from 'react'
 import UserHeader from './UserHeader';
 import UserRow from './UserRow';
+import { Routes, Route } from "react-router-dom";
+import AddUser from './AddUser';
 
 const Users = (props) => {
   const data = [
@@ -35,12 +37,17 @@ const Users = (props) => {
       email: 'doe@gmail.com',
     }
   ];
+  const handleAddUser = () => {
+    // navigate("/admin/addUser");
+  }
   return (
     <div>
       <h2>{props.title}</h2>
+      <button className="addUser" onClick={handleAddUser}>Add User
+      </button>
       <table className="styled-table">
         <thead>
-          <UserHeader/>
+          <UserHeader />
         </thead>
         <tbody>
           {
