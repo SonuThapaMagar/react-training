@@ -1,35 +1,57 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 const AddUser = () => {
   const [name, setName] = useState('');
-  const [age, setAge] = useState('');
+  const [age, setAge] = useState(0);
   const [email, setEmail] = useState('');
 
+  const [nameError, setNameError] = useState('');
+  const [ageError, setAgeError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
   const handleSave = () => {
-    // save user
+    if (name === "") {
+      setNameError('Please fill the name');
+      return;
+    }
+    else if (age === 0) {
+      setAgeError('Please fill the age');
+      return;
+    } else if (email === "") {
+      setEmailError('Please fill the email');
+      return;
+    }
+    else {
+      setNameError('');
+      setAgeError('');
+    }
   }
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   }
   const handleAgeChange = (e) => {
     setAge(e.target.value);
   }
-  const handleEmailChange = (e) => {  
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
   return (
     <div className="form-container">
-    <h2>Add User</h2>
+      <h2>Add User</h2>
       <form className="form-group">
         <label htmlFor="name">Full Name</label>
         <input type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="Enter full name" />
+        {nameError && <span className="error">{nameError}</span>}
 
         <label htmlFor="age">Age</label>
         <input type="number" id="age" name="age" value={age} onChange={handleAgeChange} placeholder="Enter your age" />
+        {ageError && <span className="error">{ageError}</span>}
         
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email"  value={email} onChange={handleEmailChange} placeholder="Enter your email" />
-
+        <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" />
+        {emailError && <span className="error">{emailError}</span>}
+        
         <button type="button" onClick={handleSave} className="btn-save">Save</button>
       </form>
     </div>
