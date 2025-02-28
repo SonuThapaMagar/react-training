@@ -4,12 +4,12 @@ const AddUser = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [email, setEmail] = useState('');
-  const [role,setRole]=useState('');
+  const [role, setRole] = useState('');
 
   const [nameError, setNameError] = useState('');
   const [ageError, setAgeError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [roleError,setRoleError]=useState('');
+  const [roleError, setRoleError] = useState('');
 
   const handleSave = () => {
     if (name === "") {
@@ -28,6 +28,13 @@ const AddUser = () => {
       setAgeError('');
     }
   }
+  const savingData = {
+    name: name,
+    email: email,
+    age: age,
+    role: role
+  };
+  console.log(savingData);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -38,9 +45,7 @@ const AddUser = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
-  const handleRoleChange=(e)=>{
-    setRole(e.target.value);
-  }
+
   return (
     <div className="form-container">
       <h2>Add User</h2>
@@ -57,12 +62,13 @@ const AddUser = () => {
         <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" />
         {emailError && <span className="error">{emailError}</span>}
 
-
         <label htmlFor="role">Role</label>
-        <select name="role" id="role" value={role} onChange={handleRoleChange}>
+        <select name="role" id="role" value={role} onChange={(e) => {
+          setRole(e.target.value);
+        }}>
           <option value="" >Select a role</option>
-          <option value="User">User</option>
-          <option value="Admin">Admin</option>
+          <option value="User" selected={role === 'user'}>User</option>
+          <option value="Admin" selected={role === 'admin'}>Admin</option>
         </select>
         {roleError && <span className="error">{roleError}</span>}
 
