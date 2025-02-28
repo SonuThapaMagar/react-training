@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../../assets/css/addUser.css';
 
 const AddUser = () => {
   const [user, setUser] = useState(
@@ -85,7 +86,6 @@ const AddUser = () => {
 
         <label htmlFor="role">Role</label>
         <select name="role" id="role" onChange={(e) => {
-          setRole(e.target.value);
           setUser({ ...user, role: e.target.value });
           setError({ ...error, role: "" });
         }}>
