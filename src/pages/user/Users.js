@@ -42,7 +42,7 @@ const Users = (props) => {
     }
   ];
   const handleAddUser = () => {
-    navigate("admin/users/addUser");
+    navigate("addUser");
   }
   return (
     <div>

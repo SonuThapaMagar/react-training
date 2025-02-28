@@ -1,82 +1,103 @@
 import React, { useState } from 'react'
 
 const AddUser = () => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(0);
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState('');
+  const [user, setUser] = useState(
+    {
+      name: "",
+      email: "",
+      age: 0,
+      role: "",
+    }
+  );
 
-  const [nameError, setNameError] = useState('');
-  const [ageError, setAgeError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [roleError, setRoleError] = useState('');
-
-  const handleSave = () => {
-    if (name === "") {
-      setNameError('Please fill the name');
-      return;
+  const [error, setError] = useState(
+    {
+      name: "",
+      email: "",
+      age: "",
+      role: "",
     }
-    else if (age === 0) {
-      setAgeError('Please fill the age');
-      return;
-    } else if (email === "") {
-      setEmailError('Please fill the email');
-      return;
-    }
-    else {
-      setNameError('');
-      setAgeError('');
-    }
-  }
-  const savingData = {
-    name: name,
-    email: email,
-    age: age,
-    role: role
-  };
-  console.log(savingData);
+  )
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    setUser({ ...user, name: e.target.value });
+    setError({ ...error, name: "" });
+
   }
   const handleAgeChange = (e) => {
-    setAge(e.target.value);
+    setUser({ ...user, age: e.target.value })
+    setError({ ...error, age: "" })
   }
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    setUser({ ...user, email: e.target.value })
+    setError({ ...error, email: "" })
   }
+
+  const handleSave = () => {
+    const validationError = {
+      name: "",
+      age: "",
+      email: "",
+      role: ""
+    };
+
+    let isValid = true;
+    if (user.name === "") {
+      validationError.name = "Name is required";
+      isValid = false;
+    }
+    if (user.email === "") {
+      validationError.email = "Email is required";
+      isValid = false;
+    }
+    if (user.age === 0) {
+      validationError.age = "Age is required";
+      isValid = false;
+    }
+    if (user.role === "") {
+      validationError.role = "Role is required";
+      isValid = false;
+    }
+
+    setError(validationError);
+    if (!isValid) {
+      return;
+    }
+  }
+  console.log(user);
 
   return (
     <div className="form-container">
       <h2>Add User</h2>
       <form className="form-group">
+
         <label htmlFor="name">Full Name</label>
-        <input type="text" id="name" name="name" value={name} onChange={handleNameChange} placeholder="Enter full name" />
-        {nameError && <span className="error">{nameError}</span>}
+        <input type="text" id="name" name="name" value={user.name} onChange={handleNameChange} placeholder="Enter full name" />
+        <div className="error">{error.name}</div>
 
         <label htmlFor="age">Age</label>
-        <input type="number" id="age" name="age" value={age} onChange={handleAgeChange} placeholder="Enter your age" />
-        {ageError && <span className="error">{ageError}</span>}
+        <input type="number" id="age" name="age" value={user.age} onChange={handleAgeChange} placeholder="Enter your age" />
+        <div className="error">{error.age}</div>
 
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" />
-        {emailError && <span className="error">{emailError}</span>}
+        <input type="email" id="email" name="email" value={user.email} onChange={handleEmailChange} placeholder="Enter your email" />
+        <div className="error">{error.email}</div>
 
         <label htmlFor="role">Role</label>
-        <select name="role" id="role" value={role} onChange={(e) => {
+        <select name="role" id="role" onChange={(e) => {
           setRole(e.target.value);
+          setUser({ ...user, role: e.target.value });
+          setError({ ...error, role: "" });
         }}>
           <option value="" >Select a role</option>
-          <option value="User" selected={role === 'user'}>User</option>
-          <option value="Admin" selected={role === 'admin'}>Admin</option>
+          <option value="User" selected={user.role === 'user'}>User</option>
+          <option value="Admin" selected={user.role === 'admin'}>Admin</option>
         </select>
-        {roleError && <span className="error">{roleError}</span>}
-
+        <div className="error">{error.role}</div>
 
         <button type="button" onClick={handleSave} className="btn-save">Save</button>
       </form>
     </div>
   )
 }
-
 export default AddUser
