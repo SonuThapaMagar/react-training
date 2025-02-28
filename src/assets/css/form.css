@@ -28,7 +28,7 @@
 
   /* Button Styling */
   .btn-save {
-    background-color: #007bff;
+    background-color: #009879;
     color: white;
     padding: 10px;
     border: none;
@@ -38,7 +38,7 @@
   }
 
   .btn-save:hover {
-    background-color: #0056b3;
+    background-color: #1a7462;
   }
 
   /* Responsive Design */
