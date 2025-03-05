@@ -7,16 +7,16 @@ import { IoIosLogOut } from "react-icons/io";
 import { IoMenu, IoClose } from "react-icons/io5";
 
 const Sidebar = () => {
-
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => {
-
         setIsOpen(!isOpen);
-    }
+    };
+
     const closeSidebar = () => {
         setIsOpen(false);
     };
+
     return (
         <>
             {/* Toggle Button */}

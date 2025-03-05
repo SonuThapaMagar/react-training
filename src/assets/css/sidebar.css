@@ -4,36 +4,18 @@
     background-color: #f6f6f6;
     color: gray;
     padding: 20px;
-    transition: width 0.3s ease-in-out;
-    position: fixed;
-    left: -250px;
     top: 0;
+    left: -250px;
     height: 100%;
     transition: left 0.3s ease-in-out;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
-
-.sidebar.sidebar.open {
+.sidebar.open{
     left: 0;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: gray;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .sidebar li {
@@ -52,7 +34,7 @@
 .sidebar a:hover,
 .sidebar a.active {
     background-color: #009879;
-    color: hsl(0, 0%, 100%);
+    color: white;
 }
 
 .sidebar span {
@@ -64,49 +46,34 @@
     margin-right: 8px;
 }
 
-/* Hamburger Menu */
+/* Menu Toggle Button */
 .menu-toggle {
-    display: none;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 24px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
     background: none;
     border: none;
+    font-size: 24px;
     cursor: pointer;
-    color: gray;
+    z-index: 1100;
 }
 
-/* Responsive Styles */
+/* Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
-        left: -200px;
+        width: 70%;
     }
+}
 
-    .sidebar.open {
-        left: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar-header {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-
-    .close-btn {
-        font-size: 24px;
-    }
-
-    .sidebar ul {
-        margin-top: 20px;
-    }
-
-    .sidebar li {
-        margin: 10px 0;
+@media (max-width: 400px) {
+    .sidebar {
+        width: 100%;
     }
 }
