@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
@@ -7,6 +7,14 @@ import { IoIosLogOut } from "react-icons/io";
 import { IoMenu, IoClose } from "react-icons/io5";
 
 const Sidebar = () => {
+
+    const navigate = useNavigate();
+
+    const handleLogoutClick = () => {
+        localStorage.setItem('is_login', 0);
+        navigate('/login');
+    }
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -60,12 +68,12 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li className='menu-items'>
-                        <NavLink to="/admin/login">
+                        <button type="button" onClick={handleLogoutClick}>
                             <span>
                                 <IoIosLogOut />
                                 Logout
                             </span>
-                        </NavLink>
+                        </button>
                     </li>
                 </ul>
             </div>

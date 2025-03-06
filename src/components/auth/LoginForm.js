@@ -28,10 +28,12 @@ const LoginForm = () => {
   const handleLogin = () => {
     if (user.username === 'admin' && user.password === 'admin') {
       setMessage("Login success");
+      localStorage.setItem('is_login', 1)
       navigate("/admin/dashboard");
     }
     else {
       setMessage("Incorrect username or password");
+      localStorage.setItem('is_login', 0);
     }
   }
   return (
