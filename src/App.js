@@ -4,39 +4,24 @@ import './assets/css/form.css';
 import './assets/css/table.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Footer from './components/Footer.js';
-import Header from './components/Header.js';
-import Sidebar from './components/Sidebar.js';
 import Dashboard from './pages/Dashboard.js';
 import Users from './pages/user/Users.js';
 import Setting from './pages/Setting.js'
 import AddUser from './pages/user/AddUser.js';
 import Login from './pages/Login.js';
+import Layout from './components/auth/Layout.js';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/admin/login" element={<Login />} />
-        <Route path="/*" element={
-          <>
-            <Header />
-            <div className="main_wrapper">
-              <Sidebar />
-              <div className="main_body">
-                <div className="body">
-                  <Routes>
-                    <Route path="/admin/dashboard" element={<Dashboard />} />
-                    <Route path="/admin/users" element={<Users title="Users" />} />
-                    <Route path="/admin/users/addUser" element={<AddUser />} />
-                    <Route path="/admin/setting" element={<Setting />} />
-                  </Routes>
-                </div>
-              </div>
-            </div>
-            <Footer />
-          </>
-        } />
+        <Route path="/" element={<Layout />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/users" element={<Users title="Users" />} />
+          <Route path="/admin/users/addUser" element={<AddUser />} />
+          <Route path="/admin/setting" element={<Setting />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

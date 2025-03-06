@@ -1,58 +1,79 @@
-*{
-  
+.loginBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
+
+/* Centering the login container */
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Styling the login form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Making inputs full-width */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* Prevents overflow */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #009879;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #007a60;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    max-width: 90%;
+    padding: 15px;
   }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .login-form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  
+
   .login-form input {
-    margin-bottom: 16px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 8px;
   }
-  
+
   .btn-login {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 14px;
+    padding: 8px;
   }
-  
-  .btn-login:hover {
-    background-color: #0056b3;
-  }
-  
-  @media (max-width: 768px) {
-    .login-container {
-      padding: 10px;
-    }
-  
-    .login-form input {
-      padding: 8px;
-    }
-  
-    .btn-login {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
+}

@@ -60,10 +60,12 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li className='menu-items'>
-                        <span>
-                            <IoIosLogOut />
-                            Logout
-                        </span>
+                        <NavLink to="/admin/login">
+                            <span>
+                                <IoIosLogOut />
+                                Logout
+                            </span>
+                        </NavLink>
                     </li>
                 </ul>
             </div>
