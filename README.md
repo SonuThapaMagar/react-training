@@ -16,3 +16,5 @@
 ## Install React Router for Navigation
 - `npm i react-router`
 
+## Install Ant Design
+- npm install antd
