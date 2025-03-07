@@ -65,7 +65,9 @@
     font-size: 24px;
     cursor: pointer;
 }
-
+.button{
+    background-color: #009879;
+}
 @media (max-width: 768px) {
     .sidebar {
         width: 70%;
