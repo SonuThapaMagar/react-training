@@ -83,7 +83,7 @@ const Users = (props) => {
   }
   return (
     <div style={{ padding: '20px' }}>
-      <Typography.Title editable level={1} style={{ margin: 8 }}>
+      <Typography.Title level={1} style={{ margin: 8 }}>
         Users
       </Typography.Title>
       <Button
