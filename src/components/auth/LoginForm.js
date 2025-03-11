@@ -24,29 +24,29 @@ const LoginForm = () => {
     }
   )
 
-  // const handleUsernameChange = (e) => {
+  const handleUsernameChange = (e) => {
 
-  //   SetUser({ ...user, username: e.target.value })
-  // }
+    SetUser({ ...user, username: e.target.value })
+  }
 
-  // const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e) => {
 
-  //   SetUser({ ...user, password: e.target.value })
-  // }
+    SetUser({ ...user, password: e.target.value })
+  }
 
   const [message, setMessage] = useState('');
 
-  // const handleLogin = () => {
-  //   if (user.username === 'admin' && user.password === 'admin') {
-  //     setMessage("Login success");
-  //     localStorage.setItem('is_login', 1)
-  //     navigate("/admin/dashboard");
-  //   }
-  //   else {
-  //     setMessage("Incorrect username or password");
-  //     localStorage.setItem('is_login', 0);
-  //   }
-  // }
+  const handleLogin = () => {
+    if (user.username === 'admin' && user.password === 'admin') {
+      setMessage("Login success");
+      localStorage.setItem('is_login', 1)
+      navigate("/admin/dashboard");
+    }
+    else {
+      setMessage("Incorrect username or password");
+      localStorage.setItem('is_login', 0);
+    }
+  }
   return (
 
     <div className="login-container">
@@ -78,6 +78,7 @@ const LoginForm = () => {
           <Form.Item
             label="Username"
             name="username"
+            value={user.username} onChange={handleUsernameChange}
             rules={[
               {
                 required: true,
@@ -91,6 +92,7 @@ const LoginForm = () => {
           <Form.Item
             label="Password"
             name="password"
+            value={user.password} onChange={handlePasswordChange}
             rules={[
               {
                 required: true,
@@ -106,7 +108,7 @@ const LoginForm = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ span: 24 }} style={{ display: 'flex', justifyContent: 'center' }} label={null}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={handleLogin}>
               Submit
             </Button>
           </Form.Item>
