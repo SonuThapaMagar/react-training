@@ -18,7 +18,7 @@
     padding: 0;
 }
 
-.sidebar li {
+.sidebar li,.button {
     margin: 15px 0;
 }
 
@@ -30,11 +30,26 @@
     border-radius: 4px;
     transition: background-color 0.3s;
 }
+.sidebar button {
+    color: gray;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
 
 .sidebar a:hover,
 .sidebar a.active {
     background-color: #009879;
     color: white;
+}
+
+.sidebar button.active{
+    background-color: #009879;
+    border: none;
+    cursor: pointer;
 }
 
 .sidebar span {
@@ -65,9 +80,7 @@
     font-size: 24px;
     cursor: pointer;
 }
-.button{
-    background-color: #009879;
-}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 70%;

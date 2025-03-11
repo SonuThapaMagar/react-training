@@ -8,14 +8,14 @@ import Users from './pages/user/Users.js';
 import Setting from './pages/Setting.js'
 import AddUser from './pages/user/AddUser.js';
 import Login from './pages/Login.js';
-import Layout from './components/Layout.js';
+import CustomLayout from './components/Layout.js';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Layout />}>
+        <Route path="/admin" element={<CustomLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users title="Users" />} />
           <Route path="users/addUser" element={<AddUser />} />

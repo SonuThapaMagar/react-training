@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 import '../../assets/css/login.css';
 import { useNavigate } from "react-router";
+import { Button, Checkbox, Form, Input } from 'antd';
+import { Card } from 'antd';
+
+
+const onFinish = (values) => {
+  console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
+
 
 const LoginForm = () => {
 
@@ -13,62 +24,94 @@ const LoginForm = () => {
     }
   )
 
-  const handleUsernameChange = (e) => {
+  // const handleUsernameChange = (e) => {
 
-    SetUser({ ...user, username: e.target.value })
-  }
+  //   SetUser({ ...user, username: e.target.value })
+  // }
 
-  const handlePasswordChange = (e) => {
+  // const handlePasswordChange = (e) => {
 
-    SetUser({ ...user, password: e.target.value })
-  }
+  //   SetUser({ ...user, password: e.target.value })
+  // }
 
   const [message, setMessage] = useState('');
 
-  const handleLogin = () => {
-    if (user.username === 'admin' && user.password === 'admin') {
-      setMessage("Login success");
-      localStorage.setItem('is_login', 1)
-      navigate("/admin/dashboard");
-    }
-    else {
-      setMessage("Incorrect username or password");
-      localStorage.setItem('is_login', 0);
-    }
-  }
+  // const handleLogin = () => {
+  //   if (user.username === 'admin' && user.password === 'admin') {
+  //     setMessage("Login success");
+  //     localStorage.setItem('is_login', 1)
+  //     navigate("/admin/dashboard");
+  //   }
+  //   else {
+  //     setMessage("Incorrect username or password");
+  //     localStorage.setItem('is_login', 0);
+  //   }
+  // }
   return (
 
     <div className="login-container">
-      <h2>Login</h2>
-      <div>
-        <form className="login-form">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
+      <Card
+        title="Login"
+        variant="borderless"
+        style={{
+          maxWidth: 600,
+        }}
+      >
+        <Form
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          style={{
+            maxWidth: 600,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Username"
             name="username"
-            value={user.username} onChange={handleUsernameChange}
-            placeholder="Enter your username"
-          />
+            rules={[
+              {
+                required: true,
+                message: 'Please input your username!',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
+          <Form.Item
+            label="Password"
             name="password"
-            value={user.password} onChange={handlePasswordChange}
-            placeholder="Enter your password"
-          />
-          <div>
-            <div>{message}</div>
-            <div className="btn-container">
-              <button type="button" onClick={handleLogin} className="btn-login">
-                Login
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password!',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item name="remember" valuePropName="checked" label={null}>
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ span: 24 }} style={{ display: 'flex', justifyContent: 'center' }} label={null}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
     </div>
   )
 }

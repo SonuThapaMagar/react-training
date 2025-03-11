@@ -5,8 +5,39 @@ import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
 import { IoMenu, IoClose } from "react-icons/io5";
+import { AntDesignOutlined } from '@ant-design/icons';
+import { Button, ConfigProvider, Space } from 'antd';
+import { createStyles } from 'antd-style';
+import { LogoutOutlined } from '@ant-design/icons';
+
+const useStyle = createStyles(({ prefixCls, css }) => ({
+    linearGradientButton: css`
+      &.${prefixCls}-btn-primary:not([disabled]):not(.${prefixCls}-btn-dangerous) {
+        > span {
+          position: relative;
+        }
+  
+        &::before {
+          content: '';
+          background: linear-gradient(135deg, #6253e1, #04befe);
+          position: absolute;
+          inset: -1px;
+          opacity: 1;
+          transition: all 0.3s;
+          border-radius: inherit;
+        }
+  
+        &:hover::before {
+          opacity: 0;
+        }
+      }
+    `,
+}));
 
 const Sidebar = () => {
+    const { styles } = useStyle();
+
+    const [size, setSize] = useState('large'); // default is 'middle'
 
     const navigate = useNavigate();
 
@@ -68,9 +99,9 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li className='menu-items'>
-                        <button type="button" onClick={handleLogoutClick}>
+                        <button type="button" onClick={handleLogoutClick} className={({ isActive }) => (isActive ? 'active' : '')} end>
                             <span>
-                                <IoIosLogOut />
+                                <LogoutOutlined />
                                 Logout
                             </span>
                         </button>
