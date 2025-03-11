@@ -1,35 +1,21 @@
-import { useNavigate } from 'react-router-dom'
-import React, { useEffect } from 'react'
-import Header from './Header'
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { useNavigate, Outlet } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import {
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    SettingOutlined,
+    UserOutlined,
+    DashboardOutlined,
+    LogoutOutlined,
 
-const { Header: AntdHeader, Content, Sider } = Layout;
-
-const items1 = ['1', '2', '3'].map((key) => ({
-    key,
-    label: `nav ${key}`,
-}));
-
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-    const key = String(index + 1);
-    return {
-        key: `sub${key}`,
-        icon: React.createElement(icon),
-        label: `subnav ${key}`,
-        children: Array.from({ length: 4 }).map((_, j) => {
-            const subKey = index * 4 + j + 1;
-            return {
-                key: subKey,
-                label: `option${subKey}`,
-            };
-        }),
-    };
-});
+} from '@ant-design/icons';
+import { Button, Layout, Menu, theme } from 'antd';
+const { Header, Sider, Content } = Layout;
 
 const CustomLayout = () => {
+    const [collapsed, setCollapsed] = useState(false);
     const {
-        token: { borderRadiusLG, colorBgContainer },
+        token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
     const navigate = useNavigate();
@@ -40,57 +26,76 @@ const CustomLayout = () => {
         }
     }, []);
 
+    const handleLogoutClick = () => {
+        localStorage.setItem('is_login', 0);
+        navigate('/login');
+    }
+
     return (
         <Layout>
-            <AntdHeader
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-            >
-                <div className="demo-logo" />
+            <Sider trigger={null} collapsible collapsed={collapsed}>
+                <div className="demo-logo-vertical" />
                 <Menu
                     theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={items1}
-                    style={{
-                        flex: 1,
-                        minWidth: 0,
-                    }}
+                    mode="inline"
+                    defaultSelectedKeys={['dashboard']}
+                    items={[
+                        {
+                            key: 'dashboard',
+                            icon: <DashboardOutlined />,
+                            label: 'Dashboard',
+                            onClick: () => navigate('dashboard'),
+                        },
+                        {
+                            key: 'users',
+                            icon: <UserOutlined />,
+                            label: 'User',
+                            onClick: () => navigate('users'),
+                        },
+                        {
+                            key: 'setting',
+                            icon: <SettingOutlined />,
+                            label: 'Settings',
+                            onClick: () => navigate('setting'),
+                        },
+                        {
+                            key: 'logout',
+                            icon: <LogoutOutlined />,
+                            label: 'Logout',
+                            onClick: () => handleLogoutClick(),
+                        },
+                    ]}
                 />
-            </AntdHeader>
+            </Sider>
             <Layout>
-                <Sider width={200} style={{ background: colorBgContainer }}>
-                    <Menu
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
-                        style={{ height: '100%', borderRight: 0 }}
-                        items={items2}
-                    />
-                </Sider>
-                <Layout style={{ padding: '0 24px 24px' }}>
-                    <Breadcrumb
-                        items={[
-                            { title: 'Home' },
-                            { title: 'List' },
-                            { title: 'App' },
-                        ]}
-                        style={{ margin: '16px 0' }}
-                    />
-                    <Content
+                <Header
+                    style={{
+                        padding: 0,
+                        background: colorBgContainer,
+                    }}
+                >
+                    <Button
+                        type="text"
+                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                        onClick={() => setCollapsed(!collapsed)}
                         style={{
-                            padding: 24,
-                            margin: 0,
-                            minHeight: 280,
-                            background: colorBgContainer,
-                            borderRadius: borderRadiusLG,
+                            fontSize: '16px',
+                            width: 64,
+                            height: 64,
                         }}
-                    >
-                        Content
-                    </Content>
-                </Layout>
+                    />
+                </Header>
+                <Content
+                    style={{
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                        background: colorBgContainer,
+                        borderRadius: borderRadiusLG,
+                    }}
+                >
+                    <Outlet />
+                </Content>
             </Layout>
         </Layout>
     );
