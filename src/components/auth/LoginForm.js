@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import '../../assets/css/login.css';
 import { useNavigate } from "react-router";
-import { Button, Checkbox, Form, Input } from 'antd';
-import { Card } from 'antd';
+import { Button, Checkbox, Form, Input, Card,Flex } from 'antd';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 
 const onFinish = (values) => {
@@ -57,60 +57,56 @@ const LoginForm = () => {
           maxWidth: 600,
         }}
       >
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 16,
-          }}
-          style={{
-            maxWidth: 600,
-          }}
+      <Form
+          name="login"
           initialValues={{
             remember: true,
+          }}
+          style={{
+            maxWidth: 360,
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item
-            label="Username"
             name="username"
             value={user.username} onChange={handleUsernameChange}
             rules={[
               {
                 required: true,
-                message: 'Please input your username!',
+                message: 'Please input your Username!',
               },
             ]}
           >
-            <Input />
+            <Input prefix={<UserOutlined />} placeholder="Username" />
           </Form.Item>
-
           <Form.Item
-            label="Password"
             name="password"
             value={user.password} onChange={handlePasswordChange}
             rules={[
               {
                 required: true,
-                message: 'Please input your password!',
+                message: 'Please input your Password!',
               },
             ]}
           >
-            <Input.Password />
+            <Input.Password prefix={<LockOutlined />} type="password" placeholder="Password" />
           </Form.Item>
+          {/* <Form.Item>
+            <Flex justify="space-between" align="center">
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+              <a href="">Forgot password</a>
+            </Flex>
+          </Form.Item> */}
 
-          <Form.Item name="remember" valuePropName="checked" label={null}>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
-          <Form.Item wrapperCol={{ span: 24 }} style={{ display: 'flex', justifyContent: 'center' }} label={null}>
-            <Button type="primary" htmlType="submit" onClick={handleLogin}>
-              Submit
+          <Form.Item>
+            <Button block type="primary" htmlType="submit"  onClick={handleLogin}>
+              Log in
             </Button>
+            or <a href="">Register now!</a>
           </Form.Item>
         </Form>
       </Card>
