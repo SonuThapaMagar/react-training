@@ -1,11 +1,10 @@
-.loginBody {
+/* .loginBody {
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
-/* Centering the login container */
 .login-container {
   margin-top: 200px;
   width: 100%;
@@ -18,7 +17,6 @@
   text-align: center;
 }
 
-/* Styling the login form */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -30,7 +28,6 @@
   text-align: left;
 }
 
-/* Making inputs full-width */
 .login-form input {
   width: 100%;
   padding: 10px;
@@ -38,7 +35,6 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  /* Prevents overflow */
 }
 
 .btn-container {
@@ -62,7 +58,6 @@
   background-color: #007a60;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .login-container {
     max-width: 90%;
@@ -77,4 +72,4 @@
     font-size: 14px;
     padding: 8px;
   }
-}
+} */

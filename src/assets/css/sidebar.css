@@ -1,5 +1,4 @@
-/* Sidebar */
-.sidebar {
+/* .sidebar {
     width: 250px;
     background-color: #f6f6f6;
     color: gray;
@@ -61,7 +60,6 @@
     margin-right: 8px;
 }
 
-/* Menu Toggle Button */
 .menu-toggle {
     position: fixed;
     top: 20px;
@@ -73,7 +71,6 @@
     z-index: 1100;
 }
 
-/* Close Button */
 .close-btn {
     background: none;
     border: none;
@@ -91,4 +88,4 @@
     .sidebar {
         width: 100%;
     }
-}
+} */

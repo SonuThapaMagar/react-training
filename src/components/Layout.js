@@ -32,9 +32,9 @@ const CustomLayout = () => {
     }
 
     return (
-        <Layout>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="demo-logo-vertical" />
+        <Layout style={{ minHeight: '100vh' }}>
+            <Sider trigger={null} collapsible collapsed={collapsed} width={200} >
+                <div className="demo-logo-vertical" style={{ height: '64px', background: 'rgba(255, 255, 255, 0.2)', margin: '16px' }} />
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -67,7 +67,7 @@ const CustomLayout = () => {
                     ]}
                 />
             </Sider>
-            <Layout>
+            <Layout style={{ flex: 1 }}>
                 <Header
                     style={{
                         padding: 0,
