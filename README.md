@@ -23,7 +23,9 @@
 ## Install Ant Design
 - npm install antd
 
-
+## Postman
+- Install postman or download extension in vs code or use web postman
+  
 ## Backend
 - `cd api`
 - `npm init`
