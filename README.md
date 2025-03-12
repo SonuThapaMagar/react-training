@@ -8,6 +8,9 @@
 - `cd react-training`
 - `npm start`
 
+## How to setup project ?
+- `git clone https://github.com/SonuThapaMagar/react-training.git`
+
 ## How to start project ?
 - Open vs code
 - `cd project` or other as your project folder name
@@ -18,3 +21,6 @@
 
 ## Install Ant Design
 - npm install antd
+
+## Backend Server
+- `npx json-server db.json --port=4000`

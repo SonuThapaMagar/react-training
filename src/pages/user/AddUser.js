@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Button, Form, Input, InputNumber  } from 'antd';
+import { Card, Button, Form, Input, InputNumber } from 'antd';
 
 const layout = {
   labelCol: {
@@ -104,6 +104,8 @@ const AddUser = () => {
         <Form.Item
           name={['user', 'name']}
           label="Name"
+          value={user.name}
+          onChange={handleNameChange}
           rules={[
             {
               required: true,
@@ -115,6 +117,8 @@ const AddUser = () => {
         <Form.Item
           name={['user', 'email']}
           label="Email"
+          value={user.email}
+          onChange={handleEmailChange}
           rules={[
             {
               type: 'email',
@@ -126,6 +130,8 @@ const AddUser = () => {
         <Form.Item
           name={['user', 'age']}
           label="Age"
+          value={user.age}
+          onChange={handleAgeChange}
           rules={[
             {
               type: 'number',
@@ -136,9 +142,16 @@ const AddUser = () => {
         >
           <InputNumber />
         </Form.Item>
-        
+
+        <Form.Item name="role" label="Role" rules={[{ required: true, message: 'Role is required' }]}>
+          <Select placeholder="Select a role" value={user.role} onChange={(value) => handleChange('role', value)}>
+            <Option value="admin">Admin</Option>
+            <Option value="user">User</Option>
+          </Select>
+        </Form.Item>
+
         <Form.Item label={null}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={handleSave} >
             Submit
           </Button>
         </Form.Item>

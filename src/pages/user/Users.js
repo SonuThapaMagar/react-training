@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Table, Button, Radio, Typography } from 'antd';
-import { UserAddOutlined } from '@ant-design/icons';
+import { UserAddOutlined,EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const Users = (props) => {
 
@@ -36,8 +36,23 @@ const Users = (props) => {
     {
       title: 'Action',
       dataIndex: '',
-      key: 'x',
-      render: () => <a>Delete</a>,
+      key: 'action',
+      render: (record) => (
+        <span>
+          <Button
+            type="link"
+            icon={<EditOutlined />}
+            onClick={() => handleEdit(record)}
+            style={{ marginRight: 8 }}
+          />
+          <Button
+            type="link"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(record.id)}
+          />
+        </span>
+      ),
     },
   ];
 

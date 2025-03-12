@@ -1,0 +1,36 @@
+{
+  "users": [
+    [
+      {
+        "id": "00f317e6-4ab2-4d87-81b2-949748ee3df5",
+        "name": "John Doe",
+        "age": 25,
+        "email": "abc@gmail.com"
+      },
+      {
+        "id": "866a154e-85a0-4472-88b8-808b46e66896",
+        "name": "Jane Doe",
+        "age": 23,
+        "email": "jane@gmail.com"
+      },
+      {
+        "id": "fe8f7a16-c9b5-496a-9307-20f3d07e0c44",
+        "name": "John Smith",
+        "age": 30,
+        "email": "john@gmail.com"
+      },
+      {
+        "id": "255cafa9-ba40-4c80-9d98-b98793378e76",
+        "name": "Jane Smith",
+        "age": 28,
+        "email": "smith@gmail.com"
+      },
+      {
+        "id": "c8a0beae-56d6-439d-a5fb-8d5572d5f1a6",
+        "name": "John Doe",
+        "age": 25,
+        "email": "doe@gmail.com"
+      }
+    ]
+  ]
+}
