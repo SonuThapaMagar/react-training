@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router";
-import { Table, Button, Typography, Space } from "antd";
+import { Table, Button, Typography, Space, Popconfirm, message } from "antd"; // Import message here
 import { UserAddOutlined } from "@ant-design/icons";
 import axios from "axios";
 
@@ -9,7 +9,12 @@ const Users = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
+  // Fetch users data
   useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = () => {
     axios
       .get("http://localhost:4000/users")
       .then(function (response) {
@@ -21,14 +26,25 @@ const Users = (props) => {
         // handle error
         console.log(error);
       });
-  }, []);
+  };
+
+  // Delete user function
+  const handleDelete = (userId) => {
+    axios
+      .delete(`http://localhost:4000/users/${userId}`)
+      .then(function (response) {
+        // handle success
+        message.success("User deleted successfully"); // Use message here
+        fetchUsers(); // Refresh the users list
+      })
+      .catch(function (error) {
+        // handle error
+        message.error("Failed to delete user"); // Use message here
+        console.log(error);
+      });
+  };
 
   const columns = [
-    // {
-    //   title: 'Id',
-    //   dataIndex: 'id',
-    //   key: 'id',
-    // },
     {
       title: "Name",
       dataIndex: "name",
@@ -53,7 +69,16 @@ const Users = (props) => {
       render: (_, item) => (
         <Space size="middle">
           <NavLink to={`/admin/users/editUser/${item.id}`}>Edit</NavLink>
-          <Button type="button">Delete</Button>
+          <Popconfirm
+            title="Are you sure you want to delete this user?"
+            onConfirm={() => handleDelete(item.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="button" danger>
+              Delete
+            </Button>
+          </Popconfirm>
         </Space>
       ),
     },
@@ -62,6 +87,7 @@ const Users = (props) => {
   const handleAddUser = () => {
     navigate("addUser");
   };
+
   return (
     <div style={{ padding: "20px" }}>
       <Typography.Title level={1} style={{ margin: 8 }}>
@@ -91,6 +117,7 @@ const Users = (props) => {
           rowExpandable: (record) => record.name !== "Not Expandable",
         }}
         dataSource={data}
+        rowKey="id"
       />
     </div>
   );
