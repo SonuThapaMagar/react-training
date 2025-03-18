@@ -3,10 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
-import { IoIosLogOut } from "react-icons/io";
 import { IoMenu, IoClose } from "react-icons/io5";
-import { AntDesignOutlined } from '@ant-design/icons';
-import { Button, ConfigProvider, Space } from 'antd';
 import { createStyles } from 'antd-style';
 import { LogoutOutlined } from '@ant-design/icons';
 

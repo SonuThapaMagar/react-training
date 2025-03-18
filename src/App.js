@@ -9,16 +9,20 @@ import Setting from './pages/Setting.js'
 import AddUser from './pages/user/AddUser.js';
 import Login from './pages/Login.js';
 import CustomLayout from './components/Layout.js';
+import UserDetails from './pages/user/UserDetails.js';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<CustomLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users title="Users" />} />
           <Route path="users/addUser" element={<AddUser />} />
+          <Route path="users/editUser/:userId" element={<AddUser />} />
+          <Route path="users/userDetails/:userId" element={<UserDetails />} />
           <Route path="setting" element={<Setting />} />
         </Route>
       </Routes>
