@@ -83,8 +83,8 @@ const AddUser = () => {
   };
 
   return (
-    <Card title="Add User" variant="borderless" style={{ width: 300 }}>
-      <h2>{params.userId ? "Edit" : "Add"}</h2>
+    <Card variant="borderless" style={{ width: 300 }}>
+      <h2>{params.userId ? "Edit User" : "Add User"}</h2>
       <Form
         {...layout}
         form={form}

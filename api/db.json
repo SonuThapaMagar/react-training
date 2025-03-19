@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "2",
-      "name": "Hello",
+      "name": "Zayn",
       "age": 22,
       "email": "hello@gmail.com",
       "role": "admin"

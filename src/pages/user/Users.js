@@ -1,7 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router";
-import { Table, Button, Typography, Space, Popconfirm, message } from "antd"; // Import message here
+import {
+  Table,
+  Button,
+  Typography,
+  Space,
+  Popconfirm,
+  message,
+  Card,
+} from "antd"; // Import message here
 import { UserAddOutlined } from "@ant-design/icons";
 import axios from "axios";
 
@@ -34,12 +42,13 @@ const Users = (props) => {
       .delete(`http://localhost:4000/users/${userId}`)
       .then(function (response) {
         // handle success
-        message.success("User deleted successfully"); // Use message here
-        fetchUsers(); // Refresh the users list
+        message.success("User deleted successfully");
+        // Refresh the users list
+        fetchUsers();
       })
       .catch(function (error) {
         // handle error
-        message.error("Failed to delete user"); // Use message here
+        message.error("Failed to delete user");
         console.log(error);
       });
   };
@@ -68,14 +77,18 @@ const Users = (props) => {
       key: "action",
       render: (_, item) => (
         <Space size="middle">
-          <NavLink to={`/admin/users/editUser/${item.id}`}>Edit</NavLink>
+          <NavLink to={`/admin/users/editUser/${item.id}`}>
+          <Button type="primary">
+          Edit
+          </Button>
+          </NavLink>
           <Popconfirm
             title="Are you sure you want to delete this user?"
             onConfirm={() => handleDelete(item.id)}
             okText="Yes"
             cancelText="No"
           >
-            <Button type="button" danger>
+            <Button type="primary" danger htmlType="button">
               Delete
             </Button>
           </Popconfirm>
@@ -90,35 +103,40 @@ const Users = (props) => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <Typography.Title level={1} style={{ margin: 8 }}>
-        Users
-      </Typography.Title>
-      <Button
-        type="primary"
-        shape="round"
-        icon={<UserAddOutlined />}
-        onClick={handleAddUser}
-        style={{ margin: 8 }}
+      <Card
+        type="inner"
+        title={<h2>{props.title}</h2>}
+        extra={
+          <Button
+            type="primary"
+            shape="round"
+            icon={<UserAddOutlined />}
+            onClick={handleAddUser}
+            style={{ margin: 8 }}
+          >
+            Add User
+          </Button>
+        }
       >
-        Add User
-      </Button>
-      <Table
-        columns={columns}
-        expandable={{
-          expandedRowRender: (record) => (
-            <p
-              style={{
-                margin: 0,
-              }}
-            >
-              {record.description}
-            </p>
-          ),
-          rowExpandable: (record) => record.name !== "Not Expandable",
-        }}
-        dataSource={data}
-        rowKey="id"
-      />
+        <Table
+          columns={columns}
+          expandable={{
+            expandedRowRender: (record) => (
+              <p
+                style={{
+                  margin: 0,
+                }}
+              >
+                {record.description}
+              </p>
+            ),
+            rowExpandable: (record) => record.name !== "Not Expandable",
+          }}
+          dataSource={data}
+          rowKey="id"
+        />
+      </Card>
+      
     </div>
   );
 };
