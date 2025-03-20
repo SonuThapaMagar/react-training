@@ -12,21 +12,24 @@
       "name": "John Smith",
       "age": 30,
       "email": "john@gmail.com",
-      "role": "admin"
+      "role": "admin",
+      "password":12345
     },
     {
       "id": "4",
       "name": "Smith",
       "age": 28,
       "email": "jane@gmail.com",
-      "role": "user"
+      "role": "user",
+      "password":12345
     },
     {
       "id": "5",
       "name": "John Doe",
       "age": 25,
       "email": "doe@gmail.com",
-      "role": "user"
+      "role": "user",
+      "password":12345
     }
   ]
 }

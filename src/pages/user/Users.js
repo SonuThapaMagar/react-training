@@ -1,26 +1,25 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router";
-import {
-  Table,
-  Button,
-  Typography,
-  Space,
-  Popconfirm,
-  message,
-  Card,
-} from "antd"; // Import message here
+import { Table, Button, Space, Popconfirm, message, Card } from "antd"; // Import message here
 import { UserAddOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { getUsers } from "../../Utils/User.util.js";
 
 const Users = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
   // Fetch users data
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
+
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    getUsers().then((response) => {
+      setData(response);
+    });
+  },[]);
 
   const fetchUsers = () => {
     axios
@@ -78,9 +77,7 @@ const Users = (props) => {
       render: (_, item) => (
         <Space size="middle">
           <NavLink to={`/admin/users/editUser/${item.id}`}>
-          <Button type="primary">
-          Edit
-          </Button>
+            <Button type="primary">Edit</Button>
           </NavLink>
           <Popconfirm
             title="Are you sure you want to delete this user?"
@@ -136,7 +133,6 @@ const Users = (props) => {
           rowKey="id"
         />
       </Card>
-      
     </div>
   );
 };
