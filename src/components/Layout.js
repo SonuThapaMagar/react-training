@@ -11,6 +11,8 @@ import {
 import { Button, Layout, Menu, theme } from "antd";
 import { UserContext } from "../context API/user.context";
 import Logo from "../assets/college_logo.png";
+import {showSuccessToast} from '../Utils/toastify.util'
+
 const { Header, Sider, Content } = Layout;
 
 const CustomLayout = () => {
@@ -31,6 +33,7 @@ const CustomLayout = () => {
 
   const handleLogoutClick = () => {
     localStorage.setItem("is_login", 0);
+    showSuccessToast("Logout successful");
     navigate("/login");
   };
 

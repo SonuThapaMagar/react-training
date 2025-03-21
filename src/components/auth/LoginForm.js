@@ -22,9 +22,7 @@ const LoginForm = () => {
     checkLogin(values.email, values.password).then((data) => {
       if (data === null) {
         showErrorToast("Incorrect username or password !");
-        setMessage("Incorrect username or password");
       } else {
-        setMessage("Login successful");
         showSuccessToast("Login successful");
         _setUser(data);
         localStorage.setItem("is_login", 1);
