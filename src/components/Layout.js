@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { UserContext } from "../context API/user.context";
-
+import Logo from "../assets/college_logo.png";
 const { Header, Sider, Content } = Layout;
 
 const CustomLayout = () => {
@@ -27,7 +27,7 @@ const CustomLayout = () => {
     if (isLogin !== "1") {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogoutClick = () => {
     localStorage.setItem("is_login", 0);
@@ -41,11 +41,20 @@ const CustomLayout = () => {
           className="demo-logo-vertical"
           style={{
             height: "64px",
-            background: "rgba(255, 255, 255, 0.2)",
             margin: "16px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        />
-        <div style={{ color: "#ffffff", padding: 30 }}>{_user?.name}</div>
+        >
+          <img
+            src={Logo}
+            alt="College Logo"
+            style={{ maxWidth: "100%", maxHeight: "100%" }}
+          />
+        </div>
+
+        <div style={{ color: "#ffffff", padding: 30 }}>{_user?.email}</div>
         <Menu
           theme="dark"
           mode="inline"

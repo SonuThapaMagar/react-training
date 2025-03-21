@@ -1,14 +1,17 @@
 import React, { useState, useContext } from "react";
 import "../../assets/css/login.css";
 import { useNavigate } from "react-router";
-import { Button, Form, Input, Card} from "antd";
+import { Button, Form, Input, Card } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { UserContext } from "../../context API/user.context";
 import { checkLogin } from "../../Utils/User.util";
+import {showErrorToast,showSuccessToast} from '../../Utils/toastify.util'
 
 const LoginForm = () => {
   const { _setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+
   const [user, SetUser] = useState({
     email: "",
     password: "",
@@ -18,9 +21,11 @@ const LoginForm = () => {
     console.log("Success:", values);
     checkLogin(values.email, values.password).then((data) => {
       if (data === null) {
+        showErrorToast("Incorrect username or password !");
         setMessage("Incorrect username or password");
       } else {
         setMessage("Login successful");
+        showSuccessToast("Login successful");
         _setUser(data);
         localStorage.setItem("is_login", 1);
         localStorage.setItem("user", JSON.stringify(data));
@@ -39,8 +44,6 @@ const LoginForm = () => {
   // const handlePasswordChange = (e) => {
   //   SetUser({ ...user, password: e.target.value });
   // };
-
-  const [message, setMessage] = useState("");
 
   // const handleLogin = () => {
   //   if (user.username === "admin" && user.password === "admin") {

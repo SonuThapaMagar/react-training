@@ -12,6 +12,9 @@ import Login from "./pages/Login.js";
 import CustomLayout from "./components/Layout.js";
 import UserDetails from "./pages/user/UserDetails.js";
 import { UserContext } from "./context API/user.context.js";
+import Landing from "./pages/Landing.js";
+import { ToastContainer } from 'react-toastify';
+
 
 const App = () => {
   const [_user, _setUser] = useState(
@@ -23,7 +26,7 @@ const App = () => {
     <UserContext.Provider value={{ _user, _setUser }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<CustomLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
@@ -35,6 +38,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </UserContext.Provider>
   );
 };
